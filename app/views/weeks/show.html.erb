@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Winner 1:</strong>
+  <%= @week.winner_1 %>
+</p>
+
+<p>
+  <strong>Winner 2:</strong>
+  <%= @week.winner_2 %>
+</p>
+
+<%= link_to 'Edit', edit_week_path(@week) %> |
+<%= link_to 'Back', weeks_path %>

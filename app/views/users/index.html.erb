@@ -1,0 +1,24 @@
+<div class='row'>
+  <h1 align="center">Leaderboard</h1>
+  <div class="table-responsive col-md-8 col-xs-12 col-sm-8">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Masters</th>
+        <th>US open</th>
+        <th>British</th>
+        <th>PGA Championship</th>
+        <th>Score </th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%=user.name%></td>
+          <td><%=user.score%></td>
+        </tr>
+      <% end %>
+    </tbody>
+</div>
