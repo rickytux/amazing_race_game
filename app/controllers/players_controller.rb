@@ -11,7 +11,9 @@ class PlayersController < ApplicationController
 
   # GET /players/1
   # GET /players/1.json
-  def show; end
+  def show
+    @scorecards = @player.scorecards.order(:week_id)
+  end
 
   # GET /players/new
   def new

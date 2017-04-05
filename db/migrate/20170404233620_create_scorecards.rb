@@ -17,5 +17,7 @@ class CreateScorecards < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :scorecards, [:player_id, :week_id]
   end
 end
