@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ScorecardsController < ApplicationController
-  before_action :set_scorecard, only: [:show, :edit, :update, :destroy]
+  before_action :set_scorecard, only: %i[show edit update destroy]
 
   # GET /scorecards
   # GET /scorecards.json
@@ -9,8 +11,7 @@ class ScorecardsController < ApplicationController
 
   # GET /scorecards/1
   # GET /scorecards/1.json
-  def show
-  end
+  def show; end
 
   # GET /scorecards/new
   def new
@@ -18,8 +19,7 @@ class ScorecardsController < ApplicationController
   end
 
   # GET /scorecards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /scorecards
   # POST /scorecards.json
@@ -62,13 +62,14 @@ class ScorecardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scorecard
-      @scorecard = Scorecard.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scorecard_params
-      params.require(:scorecard).permit(:player_id, :week_id, :leg_win, :second, :third, :bleeps, :steals, :power_use, :power_pass, :fall)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scorecard
+    @scorecard = Scorecard.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def scorecard_params
+    params.require(:scorecard).permit(:player_id, :week_id, :leg_win, :second, :third, :bleeps, :steals, :power_use, :power_pass, :fall)
+  end
 end

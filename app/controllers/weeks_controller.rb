@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class WeeksController < ApplicationController
-  before_action :set_week, only: [:show, :edit, :update, :destroy]
+  before_action :set_week, only: %i[show edit update destroy]
 
   # GET /weeks
   # GET /weeks.json
@@ -19,8 +21,7 @@ class WeeksController < ApplicationController
   end
 
   # GET /weeks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /weeks
   # POST /weeks.json
@@ -63,13 +64,14 @@ class WeeksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_week
-      @week = Week.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def week_params
-      params.require(:week).permit(:winner_1, :winner_2)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_week
+    @week = Week.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def week_params
+    params.require(:week).permit(:winner_1, :winner_2)
+  end
 end
