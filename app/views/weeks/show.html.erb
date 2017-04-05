@@ -2,12 +2,12 @@
 
 <p>
   <strong>Winner 1:</strong>
-
+  <%=@winners.first.name%>
 </p>
 
 <p>
   <strong>Winner 2:</strong>
-
+  <%=@winners.last.name%>
 </p>
 
 <%= link_to 'Edit', edit_week_path(@week) %> |

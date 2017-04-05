@@ -10,5 +10,40 @@
   <%= @player.user.name %>
 </p>
 
+<div class="table-responsive col-md-8 col-xs-12 col-sm-8">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Leg Win</th>
+        <th>Second Place</th>
+        <th>Third Place</th>
+        <th>Bleeps</th>
+        <th>Cab Steals</th>
+        <th>Power Play</th>
+        <th>Missed Power Play</th>
+        <th>Falls</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @scorecards.each do |cards| %>
+        <tr>
+          <td><%=cards.week_id%></td>
+          <td><%=cards.leg_win%></td>
+          <td><%=cards.second%></td>
+          <td><%=cards.third%></td>
+          <td><%=cards.bleeps%></td>
+          <td><%=cards.steals%></td>
+          <td><%=cards.power_use%></td>
+          <td><%=cards.power_pass%></td>
+          <td><%=cards.fall%></td>
+          <td><%=cards.total%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>

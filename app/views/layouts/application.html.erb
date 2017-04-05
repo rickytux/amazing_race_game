@@ -23,15 +23,12 @@
       </div>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class= "nav navbar-nav">
-          <li>
-            <%= link_to 'Teams' %>
-          </li>
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               Racers <b class="caret"></b>
             </a>
             <ul role="menu" class="dropdown-menu">
-              <% Player.all.each do |player| %>
+              <% Player.all.order(:name).each do |player| %>
                 <li><%= link_to "#{player.name}", player_path(player)%></li>
               <% end %>
             </ul>
@@ -56,7 +53,7 @@
               </ul>
             </li>
           <% end %>
-          <li>    <a href="#myModal" data-toggle="modal">Rules</a></li>
+          <li>    <a href="#myModal" data-toggle="modal">Scoring</a></li>
         </ul>
       </div>
     </div>
@@ -78,21 +75,22 @@
           <div class="modal-content">
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h3 class="modal-title">Rules</h3>
+                  <h3 class="modal-title">Point System</h3>
               </div>
               <div class="modal-body">
-                <p>How do I do play?</p>
-                <ol>
-                  <li>Choose 4 Golfers to your team with a budget of 33,000</li>
-                  <li>Sit back and watch them play terribly</li>
-                  <li>Your team's hole score is calculated by taking the lowest player score
-                      on that hole</li>
-                  <li>Lowest scoring team of each tournament will win cash and lowest cumulative score also wins money</li>
-                </ol>
-                <p class="text-warning"><small>You won't be able to select players until you have paid.  This way payouts can happen once each tournament has ended.</small></p>
-              </div>
-              <div class="modal-footer">
-                <a href="mailto:pgabestball@gmail.com?subject=Bestball%20Question" type="button" class="btn btn-primary">Questions?</a>
+                <h4>How much are things worth?</h4>
+                <p> Points for speed and chaos:<br/>
+                    10 points for leg win<br/>
+                    5 points for 2nd Place Finish<br/>
+                    3 points for 3nd Place Finish<br/>
+                </p>
+                <p>
+                  1 point for everything they say that CBS bleeps<br/>
+                  1 point for stealing someone's cab<br/>
+                  1 point for using power (ie express pass, uturn)<br/>
+                  1 point for a fall<br/>
+                  -1 point for passing up using a special power
+                </p>
               </div>
           </div>
       </div>
