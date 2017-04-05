@@ -1,0 +1,29 @@
+language: ruby
+cache: bundler
+bungler_args: --production
+
+addons:
+  postgresql: "9.4"
+
+rvm:
+  - 2.4.0
+before_script:
+  - psql -c 'create database amazing_race_game_test;' -U postgres
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare --trace
+env:
+  matrix:
+    - TEST_SUITE="rake spec"
+    - TEST_SUITE="rubocop"
+script: bundle exec $TEST_SUITE
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form*'
+    - 'db/migrate/*'
+    - 'vendor/**/*'
+  RunRailsCops: true
+notifications:
+  email: false

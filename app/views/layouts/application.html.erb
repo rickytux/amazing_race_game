@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Amazing Race Game</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  <nav id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Amazing Race</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class= "nav navbar-nav">
+          <li>
+            <%= link_to 'Teams' %>
+          </li>
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              Racers <b class="caret"></b>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <% Player.all.each do |player| %>
+                <li><%= link_to "#{player.name}", player_path(player)%></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              Weeks <b class="caret"></b>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <% Week.all.each do |week| %>
+                <li><%= link_to "Week #{week.id}", week_path(week)%></li>
+              <% end %>
+            </ul>
+          </li>
+          <% if user_signed_in? and current_user.admin %>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              Admin <b class="caret"></b>
+              <ul role="menu" class="dropdown-menu">
+                <li><a href="/scorecards/all/edit">Edit Card</a></li>
+                <li><a href="/players/all/edit">Edit Players</a></li>
+              </ul>
+            </li>
+          <% end %>
+          <li>    <a href="#myModal" data-toggle="modal">Rules</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row" style='height: 5em'>
+  </div>
+  <div class="container">
+    <div class="col-xs-12">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if !notice && alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </div>
+    <div class="row"></div>
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h3 class="modal-title">Rules</h3>
+              </div>
+              <div class="modal-body">
+                <p>How do I do play?</p>
+                <ol>
+                  <li>Choose 4 Golfers to your team with a budget of 33,000</li>
+                  <li>Sit back and watch them play terribly</li>
+                  <li>Your team's hole score is calculated by taking the lowest player score
+                      on that hole</li>
+                  <li>Lowest scoring team of each tournament will win cash and lowest cumulative score also wins money</li>
+                </ol>
+                <p class="text-warning"><small>You won't be able to select players until you have paid.  This way payouts can happen once each tournament has ended.</small></p>
+              </div>
+              <div class="modal-footer">
+                <a href="mailto:pgabestball@gmail.com?subject=Bestball%20Question" type="button" class="btn btn-primary">Questions?</a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<%= form_for(scorecard) do |f| %>
+  <% if scorecard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scorecard.errors.count, "error") %> prohibited this scorecard from being saved:</h2>
+
+      <ul>
+      <% scorecard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :player_id %>
+    <%= f.number_field :player_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :week_id %>
+    <%= f.number_field :week_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :leg_win %>
+    <%= f.check_box :leg_win %>
+  </div>
+
+  <div class="field">
+    <%= f.label :second %>
+    <%= f.check_box :second %>
+  </div>
+
+  <div class="field">
+    <%= f.label :third %>
+    <%= f.check_box :third %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bleeps %>
+    <%= f.number_field :bleeps %>
+  </div>
+
+  <div class="field">
+    <%= f.label :steals %>
+    <%= f.number_field :steals %>
+  </div>
+
+  <div class="field">
+    <%= f.label :power_use %>
+    <%= f.number_field :power_use %>
+  </div>
+
+  <div class="field">
+    <%= f.label :power_pass %>
+    <%= f.number_field :power_pass %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fall %>
+    <%= f.number_field :fall %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
