@@ -29,6 +29,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '3.2.0'
 gem 'devise'
+gem 'lookup_by'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -41,6 +42,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'awesome_print', require: false
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-remote'
+  gem 'rubocop'
 end
 
 group :development do

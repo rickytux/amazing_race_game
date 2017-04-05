@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @scorecard.player_id %>
+</p>
+
+<p>
+  <strong>Week:</strong>
+  <%= @scorecard.week_id %>
+</p>
+
+<p>
+  <strong>Leg win:</strong>
+  <%= @scorecard.leg_win %>
+</p>
+
+<p>
+  <strong>Second:</strong>
+  <%= @scorecard.second %>
+</p>
+
+<p>
+  <strong>Third:</strong>
+  <%= @scorecard.third %>
+</p>
+
+<p>
+  <strong>Bleeps:</strong>
+  <%= @scorecard.bleeps %>
+</p>
+
+<p>
+  <strong>Steals:</strong>
+  <%= @scorecard.steals %>
+</p>
+
+<p>
+  <strong>Power use:</strong>
+  <%= @scorecard.power_use %>
+</p>
+
+<p>
+  <strong>Power pass:</strong>
+  <%= @scorecard.power_pass %>
+</p>
+
+<p>
+  <strong>Fall:</strong>
+  <%= @scorecard.fall %>
+</p>
+
+<%= link_to 'Edit', edit_scorecard_path(@scorecard) %> |
+<%= link_to 'Back', scorecards_path %>
