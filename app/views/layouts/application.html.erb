@@ -31,7 +31,7 @@
               Racers <b class="caret"></b>
             </a>
             <ul role="menu" class="dropdown-menu">
-              <% Player.all.each do |player| %>
+              <% Player.all.order(:name).each do |player| %>
                 <li><%= link_to "#{player.name}", player_path(player)%></li>
               <% end %>
             </ul>

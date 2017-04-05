@@ -2,4 +2,5 @@
 
 class Scorecard < ApplicationRecord
   belongs_to :week
+  belongs_to :player
 end
